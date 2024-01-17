@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
+import GuestForm from './components/GuestComponent';
+import RoomComponent from './components/RoomComponent';
+import TransactionComponent from './components/TransactionComponent';
+import PaymentForm from './components/PaymentForm';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Routes>
+      <Route path = '/' element={<Home />}/>
+      <Route path='/guest-booking' element={<GuestForm />}/>
+      <Route path='/room-booking/:folioNumber' element={<RoomComponent />} /> {/* Updated route path */}
+      <Route path='/transaction/:folioNumber' element={<TransactionComponent />} /> 
+      <Route path='/payment-form/:folioNumber/:totalAmount' element={<PaymentForm />} />
+      </Routes>
+    </>
   );
 }
 
